@@ -3,6 +3,7 @@ import "../styles/App.scss";
 import StatusLine from "./StatusLine";
 
 
+
 function App() {
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [tasks, setTasks] = useState([]);
@@ -33,17 +34,17 @@ function App() {
     ]);
   }
 
-  // function addTask(taskToAdd) {
-  //   let filteredTasks = tasks.filter((task) => {
-  //     return task.id !== taskToAdd.id;
-  //   });
+  function addTask(taskToAdd) {
+    let filteredTasks = tasks.filter((task) => {
+      return task.id !== taskToAdd.id;
+    });
 
-  //   let newTaskList = [...filteredTasks, taskToAdd];
+    let newTaskList = [...filteredTasks, taskToAdd];
 
-  //   setTasks(newTaskList);
+    setTasks(newTaskList);
 
-  //   saveTasksToLocalStorage(newTaskList);
-  // }
+    saveTasksToLocalStorage(newTaskList);
+  }
 
   function deleteTask(taskId) {
     let filteredTasks = tasks.filter((task) => {
@@ -97,7 +98,7 @@ function App() {
             <StatusLine
               tasks={tasks}
               addEmptyTask={addEmptyTask}
-              //addTask={addTask}
+              addTask={addTask}
               deleteTask={deleteTask}
               moveTask={moveTask}
               status="Pending"
@@ -105,7 +106,7 @@ function App() {
             <StatusLine
               tasks={tasks}
               addEmptyTask={addEmptyTask}
-              // addTask={addTask}
+               addTask={addTask}
               deleteTask={deleteTask}
               moveTask={moveTask}
               status="In Progress"
@@ -113,11 +114,12 @@ function App() {
             <StatusLine
               tasks={tasks}
               addEmptyTask={addEmptyTask}
-              //addTask={addTask}
+              addTask={addTask}
               deleteTask={deleteTask}
               moveTask={moveTask}
               status="Completed"
             />
+           
           </section>
         </main>
         

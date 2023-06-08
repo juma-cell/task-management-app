@@ -29,7 +29,7 @@
       border-radius: 0.25rem;
       color: $white;
       text-align: center;
-      resize: none;
+      resize: auto;
       display: flex;
       font-family: "Kanit", sans-serif;
 
@@ -59,7 +59,49 @@
         cursor: text;
       }
     }
+    
+    .due_date {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0;
+      width: 100%;
+      font-size: 1.1rem;
 
+      &:hover {
+        cursor: text;
+      }
+    }
+
+    .completed {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0;
+      width: 100%;
+      font-size: 1.1rem;
+
+      &:hover {
+        cursor: text;
+      }
+    }
+
+    .category_id {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0;
+      width: 100%;
+      font-size: 1.1rem;
+
+      &:hover {
+        cursor: text;
+      }
+    }
+    .user_id {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0;
+      width: 100%;
+      font-size: 1.1rem;
+
+      &:hover {
+        cursor: text;
+      }
+    }
     .description {
       margin-bottom: 0.5rem;
       padding: 0.5rem;
@@ -138,8 +180,8 @@
     }
 
     &.collapsed {
-      flex-direction: row;
-      align-content: center;
+      flex-direction: column;
+      align-content: space-around;
 
       .title {
         margin: 0;

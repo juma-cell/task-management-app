@@ -2,7 +2,7 @@ import "../styles/task.scss";
 import { useState } from "react";
 
 export default function Task(props) {
-  const {  deleteTask, moveTask, task } = props;
+  const { addTask, deleteTask, moveTask, task } = props;
 
   const [urgencyLevel, setUrgencyLevel] = useState(task.urgency);
   const [collapsed, setCollapsed] = useState(task.isCollapsed);
@@ -14,7 +14,7 @@ export default function Task(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-  
+
     if (formAction === "save") {
       if (collapsed) {
         setCollapsed(false);
@@ -27,34 +27,16 @@ export default function Task(props) {
           status: task.status,
           isCollapsed: true,
         };
-  
-        // Send the new task to the backend
-        fetch('http://127.0.0.1:9292/tasks', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newTask),
-        })
-          .then(response => response.json())
-          .then(data => {
-            // Handle the response from the backend if needed
-            console.log(data);
-          })
-          .catch(error => {
-            // Handle any errors that occurred during the request
-            console.error('Error:', error);
-          });
-  
+
+        addTask(newTask);
         setCollapsed(true);
       }
     }
-  
+
     if (formAction === "delete") {
       deleteTask(task.id);
     }
   }
-  
 
   function handleMoveLeft() {
     let newStatus = "";
@@ -100,44 +82,44 @@ export default function Task(props) {
         />
         <input
           type="text"
-          className="title input"
-          name="title"
+          className="description input"
+          name="description"
           placeholder="Enter description"
           disabled={collapsed}
           defaultValue={task.title}
         />
         <input
           type="text"
-          className="title input"
-          name="title"
+          className="due_date input"
+          name="due_date"
           placeholder="Enter due_date"
           disabled={collapsed}
           defaultValue={task.title}
         />
         <input
           type="text"
-          className="title input"
-          name="title"
-          placeholder="Enter category_id"
-          disabled={collapsed}
-          defaultValue={task.title}
-        />
-        <input
-          type="text"
-          className="title input"
-          name="title"
+          className="completed input"
+          name="completed"
           placeholder="Enter completed"
           disabled={collapsed}
           defaultValue={task.title}
         />
         <input
           type="text"
-          className="title input"
-          name="title"
+          className="category_id input"
+          name="category_id"
+          placeholder="Enter category_id"
+          disabled={collapsed}
+          defaultValue={task.title}
+        />
+        <input
+          type="text"
+          className="user_id input"
+          name="user_id"
           placeholder="Enter user_id"
           disabled={collapsed}
           defaultValue={task.title}
-        /> 
+        />
         <div className="urgencyLabels">
           <label className={`low ${urgencyLevel === "low" ? "selected" : ""}`}>
             <input
