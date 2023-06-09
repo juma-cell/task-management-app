@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const { signup } = useContext(AuthContext);
+  const navigate = useNavigate(); 
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -11,6 +13,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(name, email, password);
+    navigate('/login'); 
   };
 
   return (
