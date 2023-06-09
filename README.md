@@ -63,7 +63,6 @@ Clone the repository from GitHub:
 git clone <repository-url>
 Navigate to the frontend directory:
 
-
 cd frontend/
 Install the required dependencies:
 
