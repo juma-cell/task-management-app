@@ -12,10 +12,8 @@ class TasksController < ApplicationController
     title=params[:title]
     description=params[:description]
     due_date=params[:due_date]
-    user_id= params[:user_id]
-    category_id=params[:category_id]
-
-    tasks = Task.create(title: title, description:description, due_date:due_date, user_id:user_id, category_id:category_id)
+   
+    tasks = Task.create(title: title, description:description, due_date:due_date)
     if Task
     feedback = {:achievement=> "Task has been added successfully"}
     feedback.to_json()

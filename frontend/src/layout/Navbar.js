@@ -1,65 +1,56 @@
-import {useContext} from 'react'
-import { Link } from 'react-router-dom'
-import { AuthContext } from '../context/AuthContext'
 
-export default function Navbar() 
-{
-  const {current_user, logout} = useContext(AuthContext)
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
-  console.log("CURRENT USER IN NAVBAR ", current_user)
 
+export default function Navbar() {
+  const {logout } = useContext(AuthContext);
   return (
-    <div>
-<nav className="navbar navbar-dark">
-  <div className="container">
-    
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <Link to="/" className="nav-link active" aria-current="page" >Home</Link>
+    <ul className="nav nav-tabs ">
+      <li className="nav-item">
+        <a className="nav-link " aria-current="page" href="/">
+          Home
+        </a>
+      </li>
+      <li className="nav-item dropdown">
+        <li className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+          More options
         </li>
-
-      {current_user && current_user?
-        <>
-               <li className="nav-item">
-          <Link to="/addTask" className="nav-link active" >Add Task</Link>
-        </li>
-        </>:
-        <>
-        <li className="nav-item">
-          <Link to="/login" className="nav-link active" >Login</Link>
-        </li>
-         <li className="nav-item">
-          <Link to="/addTask" className="nav-link active" >Add Task</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/signup" className="nav-link active" >Sign up</Link>
-        </li>
-        <li className="nav-item dropdown">
-          <Link to="/profile" className="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            More Options
-            <ul className="dropdown-menu" style={{ backgroundColor: 'grey' }}>
-            <li className="dropdown-item" onClick={() => logout()} style={{ color: 'brown' }}>
-              Logout
-            </li>
-
-          </ul>
-          </Link> 
-        </li>
+        <ul className="dropdown-menu">
+          <li>
+          <Link to="/addTask" className="nav-link active">
+            Add Task
+          </Link>
+          </li>
+          <li>
+          <Link to="/signup" className="nav-link active">
+                      Sign up
+                    </Link>
+          </li>
+          <li>
+          <Link to="/login" className="nav-link active">
+                      Login
+                    </Link>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
+          <li>
+          <li className="dropdown-item" onClick={() => logout()} style={{ color: 'brown' }}>
+            Logout
+          </li>
+          </li>
+        </ul>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/profile">
+          profile
+        </a>
+      </li>
+      <li className="nav-item">
         
-        </>
-       }
-
-
-
-       
-      </ul>
-    </div>
-  </div>
-</nav>
-</div>
-  )
+      </li>
+    </ul>
+  );
 }
