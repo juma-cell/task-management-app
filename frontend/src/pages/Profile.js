@@ -20,7 +20,7 @@ export default function Profile() {
   }, []);
 
   if (loading) {
-    return <p>Loading user data...</p>;
+    return <p>Loading user data....</p>;
   }
 
   if (current_user && userData && current_user.name === userData.name) {
