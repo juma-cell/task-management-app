@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2023_06_06_080758) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -33,7 +32,8 @@ ActiveRecord::Schema.define(version: 2023_06_06_080758) do
     t.string "title"
     t.text "description"
     t.date "due_date"
-    t.boolean "completed", default: false
+    t.boolean "completed"
+    t.boolean "true"
     t.integer "user_id"
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
