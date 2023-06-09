@@ -12,11 +12,11 @@ export function TaskProvider({children})
   const [tasks, setTasks] = useState()
 
    // AddTask
-   const AddTask = (title, content, userid) =>{
+   const AddTask = (title, content) =>{
     fetch("/addtasks", {
         method: "POST",
         headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({title:title, content:content, user_id:userid})
+        body: JSON.stringify({title:title, content:content})
     })
     .then((res)=>res.json())
     .then((response)=>{
@@ -24,26 +24,26 @@ export function TaskProvider({children})
         if(response.error)
         {
             Swal.fire(
-                'Error',
-                response.error,
-                'error'
+              'Success',
+              response.success,
+              'success'
               )
         }
         else if(response.success)
         { 
             nav("/")
             Swal.fire(
-                'Success',
-                response.success,
-                'success'
+              'Error',
+              "Something went wrong",
+              'error'
               )
               setonchange(!onchange)
         }
         else{
             Swal.fire(
-                'Error',
-                "Something went wrong",
-                'error'
+              'Success',
+              response.success,
+              'success'
               )
         }
 

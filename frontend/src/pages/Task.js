@@ -1,6 +1,4 @@
 import React, { useContext } from 'react'
-import image3 from "../images/image3.jpeg"
-import image9 from "../images/image9.jpeg"
 import { useParams } from 'react-router-dom'
 import { TaskContext } from '../context/TaskContext'
 import { AuthContext } from '../context/AuthContext'
@@ -22,11 +20,11 @@ export default function Task()
         <h4>{singleTask && singleTask.title}</h4>
         <div className='row gx-5'>
             <div className='col-lg-8 bg-light'>
-              <img src={image3} className='img-fluid' alt='' />
+              
              
               <div className='d-flex mt-4 gap-5 '>
-                <p>Author: {singleTask && singleTask.user.username}</p>
-                <p>Date Task added: {singleTask && singleTask.created_at }</p>             
+                <p> {singleTask && singleTask.user.username}</p>
+                <p> {singleTask && singleTask.created_at }</p>             
                 {current_user && current_user.username===singleTask.user.username?
                 <>
                 <button className='btn btn-success btn-sm'>Edit</button>
@@ -42,8 +40,11 @@ export default function Task()
 
             <div className='col-lg-4'>
             <div className='card p-2'>
-                <h5 className='fw-thin mt-5'>About This Task</h5>
-               <img src={image9} className='img-fluid' alt='' />
+                <h5 className='fw-thin mt-5'>Notice</h5>
+               <p>
+                this Task should be completed on time
+
+               </p>
             </div>
             </div>
         </div>

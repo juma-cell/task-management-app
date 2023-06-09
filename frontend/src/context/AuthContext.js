@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const nav = useNavigate();
   const [onChange, setOnChange] = useState(false);
-  const [current_user, set_currentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   // Login
   const login = (name, password) => {
@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
     })
       .then((res) => res.json())
       .then((response) => {
-        console.log(response);
         if (response.error) {
           Swal.fire('Error', response.error, 'error');
         } else if (response.success) {
@@ -41,9 +40,31 @@ export function AuthProvider({ children }) {
       .then((response) => {
         Swal.fire('Success', response.success, 'success');
         nav('/login');
-        set_currentUser(null);
+        setCurrentUser(null);
         setOnChange(!onChange);
       });
+  };
+
+  // Signup
+  const signup = (name, email, password) => {
+    fetch('/addusers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.error) {
+          Swal.fire('Success', response.success, 'success');
+        } else if (response.success) {
+          
+          Swal.fire('Error', response.error, 'error');
+          
+        } else {
+          Swal.fire('Success', response.success, 'success');
+        }
+      })
+    
   };
 
   // Fetch current user
@@ -55,16 +76,17 @@ export function AuthProvider({ children }) {
       .then((res) => res.json())
       .then((response) => {
         if (response.currentUser) {
-          set_currentUser(response.currentUser);
+          setCurrentUser(response.currentUser);
         }
       });
   }, [onChange]);
 
-  const contextData = {
-    current_user,
+  const authContextValue = {
+    currentUser,
     login,
     logout,
+    signup,
   };
 
-  return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={authContextValue}>{children}</AuthContext.Provider>;
 }

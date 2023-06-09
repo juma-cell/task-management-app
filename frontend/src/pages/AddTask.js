@@ -1,53 +1,68 @@
-import { useContext, useState } from "react"
-import image1 from "../images/image1.jpeg"
-import { AuthContext } from "../context/AuthContext"
-import { TaskContext } from "../context/TaskContext"
+import { useContext, useState } from "react";
+import image1 from "../images/image1.jpeg";
 
-  function AddTask() {
-    const { current_user } = useContext(AuthContext)
-    const { AddTask } = useContext(TaskContext)
+import { TaskContext } from "../context/TaskContext";
 
-    const [title, setTitle] = useState()
-    const [content, setContent] = useState()
+function AddTask() {
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+  const { AddTask } = useContext(TaskContext);
 
-        AddTask(title, content, current_user.id)
-    }
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
-    return (
-        <div className="container" style={{ "min-height": "70vh" }}>
-            {current_user && current_user ?
-        <>
-            <h3>Add Task</h3>
-            <div className="row h-full">
-                <div className="col-md-6">
-                    <img src={image1} className="img-fluid"  alt=" task"/>
-                </div>
-                <div className="col-md-6">
-                    <form onSubmit={handleSubmit}>
-                        <div class="form-group mt-3">
-                            <label>Title</label>
-                            <input type="text" onChange={e => setTitle(e.target.value)} class="form-control" aria-describedby="emailHelp" placeholder="Enter Title" />
-                        </div>
-                    
-                        <div class="form-group mt-3">
-                            <label for="exampleInputEmail1">Description</label>
-                            <textarea type="text" onChange={e => setContent(e.target.value)} class="form-control" aria-describedby="emailHelp" placeholder="Enter Title" />
-                        </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-                        <button type="submit" class="btn mt-3 btn-success">Submit</button>
-                    </form>
-                </div>
+    AddTask(title, content, dueDate);
+  };
+
+  return (
+    <div className="container" style={{ minHeight: "70vh" }}>
+      <h3>Add Task</h3>
+      <div className="row h-full">
+        <div className="col-md-6">
+          <img src={image1} className="img-fluid" alt="task" />
+        </div>
+        <div className="col-md-6">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group mt-3">
+              <label>Title</label>
+              <input
+                type="text"
+                onChange={(e) => setTitle(e.target.value)}
+                className="form-control"
+                placeholder="Enter Title"
+              />
             </div>
-        </>
-        :
-        <div>
-            Please login to add a task
+
+            <div className="form-group mt-3">
+              <label>Description</label>
+              <textarea
+                type="text"
+                onChange={(e) => setContent(e.target.value)}
+                className="form-control"
+                placeholder="Enter Description"
+              />
+            </div>
+
+            <div className="form-group mt-3">
+              <label>Due Date</label>
+              <input
+                type="date"
+                onChange={(e) => setDueDate(e.target.value)}
+                className="form-control"
+              />
+            </div>
+
+            <button type="submit" className="btn mt-3 btn-success">
+              Add Task
+            </button>
+          </form>
         </div>
-    }
-        </div>
-    )
+      </div>
+    </div>
+  );
 }
+
 export default AddTask;

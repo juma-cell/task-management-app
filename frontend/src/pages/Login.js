@@ -17,7 +17,7 @@ export default function Login()
   return (
     <div className='container column mt-6'>
         
-        <form className='col-sm-6 bg-success p-4 mt-5 border' onSubmit={handleSubmit}>
+        <form className='col-sm-6 p-4 mt-5 border' onSubmit={handleSubmit}>
             <h3>Login</h3>
             <div className="row mt-3">
                 <label>name</label>

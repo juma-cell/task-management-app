@@ -10,7 +10,7 @@ export default function Navbar()
 
   return (
     <div>
-<nav className="navbar navbar-dark bg-primary">
+<nav className="navbar navbar-dark">
   <div className="container">
     
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,17 +36,16 @@ export default function Navbar()
           <Link to="/addTask" className="nav-link active" >Add Task</Link>
         </li>
         <li className="nav-item">
-          <Link to="/register" className="nav-link active" >Sign up</Link>
+          <Link to="/signup" className="nav-link active" >Sign up</Link>
         </li>
         <li className="nav-item dropdown">
           <Link to="/profile" className="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             More Options
-            <ul className="dropdown-menu">
-            
-            <li className="dropdown-item" href="#">{current_user && current_user.username}</li>
-            <li><hr className="dropdown-divider" />   </li>
-         
-            <li className="dropdown-item" onClick={()=>logout()}>Logout</li>
+            <ul className="dropdown-menu" style={{ backgroundColor: 'grey' }}>
+            <li className="dropdown-item" onClick={() => logout()} style={{ color: 'brown' }}>
+              Logout
+            </li>
+
           </ul>
           </Link> 
         </li>
