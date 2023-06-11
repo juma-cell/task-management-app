@@ -11,7 +11,7 @@ export function TaskProvider({ children }) {
 
   // AddTask
   const AddTask = (title, content) => {
-    fetch("/addtasks", {
+    fetch("https://tasks-5n2l.onrender.com/addtasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export function TaskProvider({ children }) {
 
   // Delete Task
   const deleteTask = (id) => {
-    fetch(`/deletetasks/${id}`, {
+    fetch(`https://tasks-5n2l.onrender.com/deletetasks/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // Include user token
@@ -54,7 +54,7 @@ export function TaskProvider({ children }) {
 
   // Fetch Tasks
   useEffect(() => {
-    fetch("/tasks", {
+    fetch("https://tasks-5n2l.onrender.com/tasks", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
