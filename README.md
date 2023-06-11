@@ -82,3 +82,4 @@ User Authentication: The frontend offers a login and registration form, allowing
 Conclusion
 The TaskManagement app's backend and frontend work together to provide a seamless user experience for managing tasks.
 The backend handles the data processing, storage, and exposes APIs, while the frontend presents an intuitive interface and communicates with the backend to perform operations on tasks and user accounts. By combining these components, the app offers efficient task management capabilities for users.
+
