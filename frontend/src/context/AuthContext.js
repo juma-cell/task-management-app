@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
 
   // Login
   const login = (name, password) => {
-    fetch('/login', {
+    fetch('https://tasks-5n2l.onrender.com/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, password }),
@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
 
   // Logout
   const logout = () => {
-    fetch('/logout', {
+    fetch('https://tasks-5n2l.onrender.com/logout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -47,7 +47,7 @@ export function AuthProvider({ children }) {
 
   // Signup
   const signup = (name, email, password) => {
-    fetch('/addusers', {
+    fetch('https://tasks-5n2l.onrender.com/addusers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password }),
@@ -69,7 +69,7 @@ export function AuthProvider({ children }) {
 
   // Fetch current user
   useEffect(() => {
-    fetch('/current_user', {
+    fetch('https://tasks-5n2l.onrender.com/current_user', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
