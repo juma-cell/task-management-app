@@ -71,7 +71,7 @@ Start the development server:
 
 
 npm start
-The frontend should now be accessible on http://localhost:3000.
+The frontend should now be accessible on https://task-management-app-ruddy.vercel.app/.
 
 Features and Functionality
 User Interface: The frontend provides an intuitive and responsive user interface for managing tasks. 
